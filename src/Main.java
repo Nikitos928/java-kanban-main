@@ -24,7 +24,7 @@ public class Main {
 
 
 
-        Subtask subtask1 = new Subtask("название Subtask 1", "Цель Subtask 1", "NEW", epicId1);
+        Subtask subtask1 = new Subtask("название Subtask 1", "Цель Subtask 1", "DONE", epicId1);
         Subtask subtask2 = new Subtask("название Subtask 2", "Цель Subtask 2", "NEW", epicId1);
         Subtask subtask3 = new Subtask("название Subtask 3", "Цель Subtask 3", "NEW", epicId2);
         Subtask subtask4 = new Subtask("название Subtask 4", "Цель Subtask 4", "NEW", epicId2);
@@ -37,6 +37,7 @@ public class Main {
         final Integer subtaskId4 = taskManager.addSubTask(subtask4);
         final Integer subtaskId5 = taskManager.addSubTask(subtask5);
         final Integer subtaskId6 = taskManager.addSubTask(subtask6);
+        System.out.println(taskManager.getEpics());
 
 
 
