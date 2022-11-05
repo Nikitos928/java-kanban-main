@@ -1,21 +1,24 @@
 package task;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
+
 public class Epic extends Task {
-    private ArrayList<Integer> subtaskIds = new ArrayList<>();
+    private List<Integer> subtaskIds = new ArrayList<>();
 
     public Epic(String name, String description) {
         super(name, description);
     }
 
-    public Epic(String name, String description, String status, int id) {
+    public Epic(String name, String description, Status status, int id) {
         super(name, description, status, id);
     }
 
-    public ArrayList<Integer> getSubtaskIds() {
-        return subtaskIds;
+    public List<Integer> getSubtaskIds() {
+        return Collections.unmodifiableList(subtaskIds);
     }
 
     public void addSubtaskId(int id) {
@@ -39,19 +42,15 @@ public class Epic extends Task {
             return false;
         }
         Epic epic = (Epic) o;
-        Task task = (Task) o;
-        return getId() == task.getId()
-                && Objects.equals(getName(), task.getName())
-                && Objects.equals(getDescription(), task.getDescription())
-                && Objects.equals(getStatus(), task.getStatus())
+        return super.equals(o)
                 && Objects.equals(subtaskIds, epic.subtaskIds);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getDescription(), getStatus(), getId(), subtaskIds);
+        return Objects.hash(super.hashCode(), subtaskIds);
     }
-
+    @Override
     public String toString() {
         return "Task{" +
                 "name='" + getName() + '\'' +
