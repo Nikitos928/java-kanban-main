@@ -50,22 +50,27 @@ public class Main {
         taskManager.getTask(0);
         taskManager.getTask(1);
         taskManager.getTask(11);
+        taskManager.getTask(1);
+
+
 
         taskManager.getEpic(2);
-        //taskManager.getEpic(3);
-       //taskManager.getEpic(4);
-        //taskManager.getEpic(2);
-        //taskManager.getEpic(3);
+        taskManager.getEpic(3);
+        taskManager.getTask(1);
+        taskManager.getEpic(4);
+        taskManager.getEpic(2);
+        taskManager.getEpic(3);
+        taskManager.getTask(0);
 
-        //taskManager.getTask(0);
-
-        //taskManager.getSubtask(5);
-        //taskManager.getSubtask(5);
-        //taskManager.getSubtask(7);
-        //taskManager.getSubtask(6);
+        taskManager.getSubtask(5);
+        taskManager.getSubtask(5);
+        taskManager.getSubtask(7);
+        taskManager.getSubtask(6);
 
         //taskManager.removeHistory(6);
-        taskManager.getHistory();
+        for (Task t : taskManager.getHistory()) {
+            System.out.println(t);
+        }
 
 
 
