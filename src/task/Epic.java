@@ -17,6 +17,10 @@ public class Epic extends Task {
         super(name, description, status, id);
     }
 
+    public Epic() {
+
+    }
+
     public List<Integer> getSubtaskIds() {
         return Collections.unmodifiableList(subtaskIds);
     }

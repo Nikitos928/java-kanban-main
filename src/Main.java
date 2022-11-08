@@ -44,39 +44,39 @@ public class Main {
         final Integer subtaskId5 = taskManager.addSubtask(subtask5);
         final Integer subtaskId6 = taskManager.addSubtask(subtask6);
 
-        Task task3 = new Task("название Таск 3", "Цель3", Status.NEW);// id 11
-        taskManager.addTask(task3);
 
         taskManager.getTask(0);
         taskManager.getTask(1);
-        taskManager.getTask(11);
-        taskManager.getTask(1);
-
-
+        taskManager.getTask(0);
 
         taskManager.getEpic(2);
         taskManager.getEpic(3);
-        taskManager.getTask(1);
         taskManager.getEpic(4);
-        taskManager.getEpic(2);
-        taskManager.getEpic(3);
-        taskManager.getTask(0);
 
-        taskManager.getSubtask(5);
-        taskManager.getSubtask(5);
         taskManager.getSubtask(7);
-        taskManager.getSubtask(6);
 
-        //taskManager.removeHistory(6);
-        for (Task t : taskManager.getHistory()) {
+        taskManager.getSubtask(5);
+        taskManager.getSubtask(6);
+        taskManager.getSubtask(7);
+        taskManager.getSubtask(8);
+        taskManager.getSubtask(9);
+        taskManager.getSubtask(7);
+
+        taskManager.getHistory();
+
+
+
+        for (Task t : taskManager.getHistory()){
             System.out.println(t);
         }
 
+        taskManager.removeHistory(5);
+        System.out.println("////////////");
 
 
-
-
-
+        for (Task t : taskManager.getHistory()){
+            System.out.println(t);
+        }
 
 
 
