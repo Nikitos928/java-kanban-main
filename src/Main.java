@@ -4,6 +4,9 @@ import task.Task;
 import task.Epic;
 import task.Subtask;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -46,39 +49,19 @@ public class Main {
 
 
         taskManager.getTask(0);
-        taskManager.getTask(1);
         taskManager.getTask(0);
-
         taskManager.getEpic(2);
+        taskManager.getTask(1);
         taskManager.getEpic(3);
+        taskManager.getTask(1);
         taskManager.getEpic(4);
-
-        taskManager.getSubtask(7);
-
+        taskManager.getTask(1);
         taskManager.getSubtask(5);
-        taskManager.getSubtask(6);
-        taskManager.getSubtask(7);
-        taskManager.getSubtask(8);
-        taskManager.getSubtask(9);
-        taskManager.getSubtask(7);
-
-        taskManager.getHistory();
-
-
+        //taskManager.getSubtask(6);
 
         for (Task t : taskManager.getHistory()){
             System.out.println(t);
         }
-
-        taskManager.removeHistory(5);
-        System.out.println("////////////");
-
-
-        for (Task t : taskManager.getHistory()){
-            System.out.println(t);
-        }
-
-
 
     }
 }
