@@ -26,12 +26,18 @@ public class InMemoryHistoryManager implements HistoryManager {
         int x = 0;
         List<Task> y = new ArrayList<>();
         Node<Task> target = head.next;
+        if (head == null){
+            return y;
+        }
+        if (head.next == null){
+            return y;
+        }
         if (x == 0) {
-            y.add(0, head.data);
+            y.add(head.data);
             x++;
         }
         for (int i = 0; i < tasks.size() - 1; i++) {
-            y.add(0, target.data);
+            y.add(target.data);
             target = target.next;
         }
         return y;
@@ -79,7 +85,7 @@ public class InMemoryHistoryManager implements HistoryManager {
 
     @Override
     public int hashCode() {
-        return Objects.hash(tasks);
+        return Objects.hash(getHistory());
     }
 
     private void removeNode(Node<Task> node) {
@@ -114,6 +120,21 @@ public class InMemoryHistoryManager implements HistoryManager {
             this.data = data;
             this.next = next;
             this.prev = prev;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Node<?> node = (Node<?>) o;
+            return Objects.equals(data, node.data)
+                    && Objects.equals(next, node.next)
+                    && Objects.equals(prev, node.prev);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(data, next, prev);
         }
     }
 }
