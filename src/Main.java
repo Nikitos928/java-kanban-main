@@ -55,11 +55,12 @@ public class Main {
         taskManager.getEpic(3);
         taskManager.getTask(1);
         taskManager.getEpic(4);
+        taskManager.getTask(1);
         taskManager.getSubtask(5);
         taskManager.getSubtask(6);
 
         for (Task t : taskManager.getHistory()){
-            System.out.println(t);
+            System.out.println(t.getId());
         }
 
     }
