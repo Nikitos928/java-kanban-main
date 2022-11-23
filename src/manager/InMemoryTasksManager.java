@@ -8,7 +8,7 @@ import task.Subtask;
 import java.util.*;
 
 
-public class InMemoryTaskManager implements TaskManager {
+public class InMemoryTasksManager implements TaskManager {
 
     private int generatedId;
 
@@ -20,30 +20,29 @@ public class InMemoryTaskManager implements TaskManager {
     private final InMemoryHistoryManager history = new InMemoryHistoryManager();
 
     @Override
-    public int addTask(Task task) {
+    public void addTask(Task task) {
         task.setId(generatedId);
         tasks.put(task.getId(), task);
         generatedId += 1;
-        return generatedId;
+
     }
 
     @Override
-    public int addEpic(Epic epic) {
+    public void addEpic(Epic epic) {
         epic.setStatus(Status.NEW);
         epic.setId(generatedId);
         epics.put(epic.getId(), epic);
         generatedId += 1;
-        return generatedId;
+
     }
 
     @Override
-    public int addSubtask(Subtask subtask) {
+    public void addSubtask(Subtask subtask) {
         subtask.setId(generatedId);
         subtasks.put(subtask.getId(), subtask);
         epics.get(subtask.getEpicId()).addSubtaskId(generatedId);
         updateEpicStatus(epics.get(subtask.getEpicId()));
         generatedId += 1;
-        return generatedId;
     }
 
     @Override
@@ -103,7 +102,6 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void updateTask(Task task) {
         tasks.put(task.getId(), task);
-
     }
 
     @Override
@@ -218,7 +216,7 @@ public class InMemoryTaskManager implements TaskManager {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        InMemoryTaskManager that = (InMemoryTaskManager) o;
+        InMemoryTasksManager that = (InMemoryTasksManager) o;
         return generatedId == that.generatedId
                 && tasks.equals(that.tasks)
                 && subtasks.equals(that.subtasks)

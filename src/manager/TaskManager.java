@@ -9,11 +9,11 @@ import java.util.*;
 
 public interface TaskManager {
 
-    public int addTask(Task task) ;
+    public void addTask(Task task) ;
 
-    public int addEpic(Epic epic) ;
+    public void addEpic(Epic epic) ;
 
-    public int addSubtask(Subtask subtask);
+    public void addSubtask(Subtask subtask);
 
     public ArrayList<Subtask> getEpicSubtasks(int epicId) ;
 

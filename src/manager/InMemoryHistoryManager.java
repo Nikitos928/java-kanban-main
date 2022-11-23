@@ -25,13 +25,14 @@ public class InMemoryHistoryManager implements HistoryManager {
     public List<Task> getTasks() {
         int x = 0;
         List<Task> y = new ArrayList<>();
+        if (head == null) {
+            return y;
+        }
+        if (head.next == null) {
+            return y;
+        }
         Node<Task> target = head.next;
-        if (head == null){
-            return y;
-        }
-        if (head.next == null){
-            return y;
-        }
+
         if (x == 0) {
             y.add(head.data);
             x++;
@@ -51,8 +52,8 @@ public class InMemoryHistoryManager implements HistoryManager {
             } else {
                 removeNode(tasks.get(task.getId()));
                 tasks.remove(task.getId());
-                tasks.put(task.getId(), tail);
                 addLast(task);
+                tasks.put(task.getId(), tail);
             }
         } else {
             addLast(task);
@@ -92,17 +93,18 @@ public class InMemoryHistoryManager implements HistoryManager {
         if (node == null) {
             return;
         }
-
-        if (node.prev == null) {
+        if (node.next != null) {
+            if (node.prev == null) {
             node.next.prev = null;
             head = node.next;
         }
-
-        if (node.next == null) {
-            node.prev.next = null;
-            tail = node.prev;
+    }
+        if (node.prev != null) {
+            if (node.next == null) {
+                node.prev.next = null;
+                tail = node.prev;
+            }
         }
-
         if (node.next != null && node.prev != null) {
             node.prev.next = node.next;
             node.next.prev = node.prev;
@@ -124,8 +126,12 @@ public class InMemoryHistoryManager implements HistoryManager {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             Node<?> node = (Node<?>) o;
             return Objects.equals(data, node.data)
                     && Objects.equals(next, node.next)
