@@ -1,5 +1,6 @@
 package task;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,17 +11,17 @@ public class Epic extends Task {
     private List<Integer> subtaskIds = new ArrayList<>();
 
     public Epic(String name, String description) {
-        super(name, description);
+        super(name, description, Status.NEW);
     }
 
-    public Epic(String name, String description, Status status, int id) {
-        super(name, description, status, id);
+    public Epic(String name, String description, Status status, int id, LocalDateTime date, int timePerTask) {
+        super(name, description, status, id, date, timePerTask);
     }
-    public Epic (int id, String name, String description, Status status, List<Integer> subtaskIds){
-        super(name, description, status, id);
+    public Epic (int id, String name, String description, Status status, List<Integer> subtaskIds, LocalDateTime date, int timePerTask){
+        super(name, description, status, id, date, timePerTask);
         this.subtaskIds = subtaskIds;
     }
-    public Epic() {
+    public Epic(int i, String s, String s1, Status status, List<Integer> subtaskId) {
 
     }
 
